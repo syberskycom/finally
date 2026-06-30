@@ -19,6 +19,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
+from app.branding import print_logo
 from app.market.cache import PriceCache
 from app.market.seed_prices import SEED_PRICES
 from app.market.simulator import SimulatorDataSource
@@ -206,6 +207,8 @@ def print_summary(cache: PriceCache) -> None:
 
 async def run() -> None:
     """Main demo loop."""
+    print_logo()
+    await asyncio.sleep(1.5)  # let the banner be visible before entering the alt-screen dashboard
     cache = PriceCache()
     source = SimulatorDataSource(price_cache=cache, update_interval=0.5)
 
